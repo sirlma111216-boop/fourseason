@@ -1,0 +1,22 @@
+// 사계절의 지도 — Cloudflare Workers 설정
+// 정적 화면(dist)과 방 서버(Durable Object)를 하나의 Worker로 함께 배포한다.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "four-seasons-map",
+  "main": "src/worker/index.ts",
+  "compatibility_date": "2026-09-01",
+  "observability": { "enabled": true },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // API와 WebSocket은 반드시 Worker가 먼저 받는다(index.html이 대신 나가지 않게).
+    "run_worker_first": ["/api/*", "/ws/*"],
+    // 그 밖의 없는 경로(/r/ABC123 새로고침 등)는 SPA 첫 화면으로.
+    "not_found_handling": "single-page-application"
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "ROOMS", "class_name": "RoomDurableObject" }]
+  },
+  // SQLite 기반 Durable Object: Workers 무료 요금제에서도 사용할 수 있다.
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["RoomDurableObject"] }]
+}
