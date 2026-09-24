@@ -6,6 +6,8 @@
 보드게임 *Cartographers* 기본판의 규칙을 참고한 **비공식 팬 제작** 구현이며(작업명: 사계절 지도사), 원작의 카드 그림·로고를 쓰지 않았습니다.
 원작에서 확인하지 못한 카드 데이터는 **커스텀 카드**로 새로 만들어 앱과 문서에 표시했습니다 → [docs/rules-reference.md](docs/rules-reference.md)
 
+**배포 주소**: https://four-seasons-map.sirlma.workers.dev
+
 ## 할 수 있는 것
 
 - **닉네임만으로 입장**: 회원가입·이메일·비밀번호 없음. 방 만들기 → 6자리 코드·링크 공유 → 친구가 닉네임 입력 후 참가
@@ -95,6 +97,12 @@ npm run test:net
 
 ```bash
 npm run test:e2e
+```
+
+배포한 주소에 실제 방을 만들어 두 사람 한 판·봇 8자리 한 판을 돌려 보는 연기 시험(방은 보관 기간 뒤 자동 삭제):
+
+```bash
+SMOKE_BASE=https://four-seasons-map.<서브도메인>.workers.dev npm run test:smoke
 ```
 
 ## 배포 (Cloudflare Workers)

@@ -1010,9 +1010,13 @@ input:not([type]),
 .card.compact .card-head strong {
   font-size: 0.95rem;
 }
-.ruins-note {
-  justify-content: flex-start;
+.card-body.ruins-note {
+  display: block;
   font-size: 0.9rem;
+}
+.ruins-note svg {
+  vertical-align: middle;
+  margin-right: 4px;
 }
 .revealed-chain {
   display: grid;

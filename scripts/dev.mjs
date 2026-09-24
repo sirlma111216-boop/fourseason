@@ -10,7 +10,7 @@ if (!existsSync('dist')) {
 }
 
 const procs = [
-  spawn('npx', ['wrangler', 'dev', '--port', '8787'], { stdio: 'inherit', shell: true }),
+  spawn('npx', ['wrangler', 'dev', '--port', '8787', '--ip', '127.0.0.1'], { stdio: 'inherit', shell: true }),
   spawn('npx', ['vite', '--port', '5173'], { stdio: 'inherit', shell: true }),
 ];
 
